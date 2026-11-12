@@ -20,14 +20,14 @@ main = startApp defaultEvents editor
 type Model = ()
 type Action = ()
 -----------------------------------------------------------------------------
-editor :: Component parent Model Action
+editor :: Component () () Model Action
 editor = (component () noop viewModel)
-  { scripts = [ Src "https://cdn.tailwindcss.com?plugins=typography"
+  { scripts = [ Src "https://cdn.tailwindcss.com?plugins=typography" False
               , Module bootstrapEditor
               ]
   }
 -----------------------------------------------------------------------------
-viewModel :: Model -> View Model Action
+viewModel :: Model -> View () () Model Action
 viewModel () = H.div_ [ P.class_ "element" ] []
 -----------------------------------------------------------------------------
 bootstrapEditor :: MisoString
